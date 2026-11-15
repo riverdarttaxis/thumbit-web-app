@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no" />
+    <title>ThumbiT: book a local taxi</title>
+    <meta name="description" content="Licensed local taxis, booked in a tap." />
+    <!-- Lets Android phones add ThumbiT to the home screen, opening full screen like an app. -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0C0D10" media="(prefers-color-scheme: dark)" />
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        html,
+        body {
+          background: #0c0d10;
+        }
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* On a computer or tablet, keep the app the width of a phone in the middle of the page. */
+      @media (min-width: 560px) {
+        #root {
+          max-width: 480px;
+          margin: 0 auto;
+          box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.25);
+        }
+      }
+    </style>
+    <script>
+      // Android's "add to home screen" offer can arrive before the app has started:
+      // keep hold of it so the "Install ThumbiT" button can use it.
+      window.addEventListener("beforeinstallprompt", function (e) {
+        e.preventDefault();
+        window.__thumbitInstall = e;
+        window.dispatchEvent(new Event("thumbit-install-ready"));
+      });
+    </script>
+  <link rel="icon" href="/favicon.ico"/></head>
+
+  <body>
+    <noscript>ThumbiT needs JavaScript switched on in your browser.</noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/_expo/static/js/web/entry-cfdc5486cb934e3392412ae1320e0824.js" defer></script>
+</body>
+</html>
